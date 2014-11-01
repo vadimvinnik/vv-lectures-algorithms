@@ -93,29 +93,139 @@
       \[
         \lim_{n \to \infty} \frac{a\,n^2}{b\,n\log n} = \infty .
       \]
-      Поэтому пузырьковый алгоритм сортировки, который в массиве из~$n$ элементов проводит сравнение каждого элемента
-      с каждым из оставшихся, следует считать более медленным, чем пирамидальный, в котором каждое сравнение отсекает
-      от сравнения половину элементов.
   \end{itemize}
 \end{slide}
 
 \begin{slide}
-  \begin{tabular}{|c|c|c|}
-    \hline
-    $f\in\ldots$ &
-    Название &
-    Определение
-    \\
-    \hline
-    $O(g)$&
-    ограниченность сверху&
-    $\exists c>0, t \forall x>t\ f(x) \leqslant c\,g(x)$
-    \\
-    \hline
-    $o(g)$&
-    доминирование&
-    $\exists c>0, t \forall x>t\ f(x) \leqslant c\,g(x)$
-  \end{tabular}
+  Асимптотическое поведение функций. Сравнение скорости роста
+  \begin{center}
+    \begin{tabular}{|l|l|l|}
+      \hline
+      $f\in\ldots$&
+      Название&
+      Определение
+      \\[1ex]
+      \hline
+      \hline
+      $o(g)$&
+      доминирование~$g$ над~$f$&
+      $\exists c>0, t \forall x>t\ f(x) < c\,g(x)$
+      \\[1ex]
+      \hline
+      $O(g)$&
+      ограниченность сверху&
+      $\exists c>0, t \forall x>t\ f(x) \leqslant c\,g(x)$
+      \\[1ex]
+      \hline
+      $\Theta(g)$&
+      ограниченность сверху и снизу&
+      $f\in O(g) \land f\in \Omega(g)$
+      \\[1ex]
+      \hline
+      $\Omega(g)$&
+      ограниченность снизу&
+      $\exists c>0, t \forall x>t\ f(x) \geqslant c\,g(x)$
+      \\[1ex]
+      \hline
+      $\omega(g)$&
+      доминирование~$f$ над~$g$&
+      $\exists c>0, t \forall x>t\ f(x) > c\,g(x)$
+      \\[1ex]
+      \hline
+    \end{tabular}
+  \end{center}
+  \[
+    f\in\Theta(g) \Leftrightarrow \exists c_1>0,c_2>0, t\forall x>t\ c_1\, g(x) \leqslant f(x) \leqslant c_2\,g(x)
+  \]
+\end{slide}
+
+\begin{slide}
+  Аналогия между сравнением асимптотического поведения функций и сравнением чисел
+  \begin{center}
+    \begin{tabular}{lcl}
+      $f\in o(g)$      & $a < b$         & растёт медленнее\\[1ex]
+      $f\in O(g)$      & $a \leqslant b$ & растёт не быстрее\\[1ex]
+      $f\in \Theta(g)$ & $a = b$         & растёт столь же быстро\\[1ex]
+      $f\in \Omega(g)$ & $a \geqslant b$ & растёт не медленнее\\[1ex]
+      $f\in \omega(g)$ & $a > b$         & растёт быстрее
+    \end{tabular}
+  \end{center}
+\end{slide}
+
+\begin{slide}
+  Основные свойства~$\Theta$
+  \begin{itemize}
+    \item Рефлексивность
+      \[
+        f\in \Theta(f) .
+      \]
+    \item Симметричность
+      \[
+        f\in \Theta(g) \Rightarrow g\in \Theta(f) .
+      \]
+    \item Транзитивность
+      \[
+        f\in \Theta(g) \land g\in \Theta(h) \Rightarrow f\in \Theta(h) .
+      \]
+    \item Таким образом, $\Theta$ индуцирует отношение эквивалентности на множестве функций.
+  \end{itemize}
+\end{slide}
+
+\begin{slide}
+  Основные свойства других классов
+  \begin{itemize}
+    \item Транзитивность ($\xi\in\{o,O,\Theta,\omega,\Omega\}$)
+      \[
+        f\in \xi(g) \land g\in \xi(h) \Rightarrow f\in \xi(h) .
+      \]
+    \item Перестановочная симметрия:
+      \begin{eqnarray*}
+        f\in O(g) &\Leftrightarrow& g\in \Omega(f),\\
+        f\in o(g) &\Leftrightarrow& g\in \omega(f).
+      \end{eqnarray*}
+    \item Дистрибутивность ($\xi\in\{o,O,\Theta,\omega,\Omega\}$):
+      \begin{eqnarray*}
+        &f\in \xi(g) \Rightarrow c\,f\in \xi(g),\\
+        &f, g\in\xi(h) \Rightarrow (f+g)\in\xi(h),\\
+        &f\in\xi(h_1) \land g\in\xi(h_2) \Rightarrow (f\cdot g)\in\xi(h_1\cdot h_2).
+      \end{eqnarray*}
+    \item Поглощение
+      \begin{eqnarray*}
+        f\in O(h), g\in o(h) &\Rightarrow& (f+g)\in O(h),\\
+        f\in O(h), g\in o(h) &\Rightarrow& (f\cdot g)\in o(h).
+      \end{eqnarray*}
+  \end{itemize}
+\end{slide}
+
+\begin{slide}
+  Примеры
+  \begin{center}
+    \begin{tabular}{ccc}
+      $1 \in o(\log n)$&
+      $\log n\in o(\sqrt{n})$&
+      $\sqrt{n}\in o(n)$\\[1ex]
+      $n\in o(n\log n)$&
+      $n\log n\in o(n^2)$&
+      $n^2\in o(n^3)$\\[1ex]
+      $n^k\in o(p^n)$&
+      $p^n\in o(n!)$&
+      $n!\in o(n^n)$
+    \end{tabular}
+  \end{center}
+\end{slide}
+
+\begin{slide}
+  Типичная временная сложность алгоритмов
+  \begin{center}
+    \begin{tabular}{|l|l|l|}
+      \hline
+      Обозн.&
+      Название&
+      Пример
+      \\
+      \hline
+    \end{tabular}
+  \end{center}
 \end{slide}
 \end{document}
 
