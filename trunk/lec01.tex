@@ -99,40 +99,41 @@
 \begin{slide}
   Асимптотическое поведение функций. Сравнение скорости роста
   \begin{center}
-    \begin{tabular}{|l|l|l|}
+    \renewcommand{\arraystretch}{2}
+    \begin{tabularx}{\textwidth}{|l|l|X|}
       \hline
       $f\in\ldots$&
       Название&
       Определение
-      \\[1ex]
+      \\
       \hline
       \hline
       $o(g)$&
       доминирование~$g$ над~$f$&
       $\exists c>0, t \forall x>t\ f(x) < c\,g(x)$
-      \\[1ex]
+      \\
       \hline
       $O(g)$&
       ограниченность сверху&
       $\exists c>0, t \forall x>t\ f(x) \leqslant c\,g(x)$
-      \\[1ex]
+      \\
       \hline
       $\Theta(g)$&
       ограниченность сверху и снизу&
       $f\in O(g) \land f\in \Omega(g)$
-      \\[1ex]
+      \\
       \hline
       $\Omega(g)$&
       ограниченность снизу&
       $\exists c>0, t \forall x>t\ f(x) \geqslant c\,g(x)$
-      \\[1ex]
+      \\
       \hline
       $\omega(g)$&
       доминирование~$f$ над~$g$&
       $\exists c>0, t \forall x>t\ f(x) > c\,g(x)$
-      \\[1ex]
+      \\
       \hline
-    \end{tabular}
+    \end{tabularx}
   \end{center}
   \[
     f\in\Theta(g) \Leftrightarrow \exists c_1>0,c_2>0, t\forall x>t\ c_1\, g(x) \leqslant f(x) \leqslant c_2\,g(x)
@@ -142,11 +143,12 @@
 \begin{slide}
   Аналогия между сравнением асимптотического поведения функций и сравнением чисел
   \begin{center}
+    \renewcommand{\arraystretch}{2}
     \begin{tabular}{lcl}
-      $f\in o(g)$      & $a < b$         & растёт медленнее\\[1ex]
-      $f\in O(g)$      & $a \leqslant b$ & растёт не быстрее\\[1ex]
-      $f\in \Theta(g)$ & $a = b$         & растёт столь же быстро\\[1ex]
-      $f\in \Omega(g)$ & $a \geqslant b$ & растёт не медленнее\\[1ex]
+      $f\in o(g)$      & $a < b$         & растёт медленнее\\
+      $f\in O(g)$      & $a \leqslant b$ & растёт не быстрее\\
+      $f\in \Theta(g)$ & $a = b$         & растёт столь же быстро\\
+      $f\in \Omega(g)$ & $a \geqslant b$ & растёт не медленнее\\
       $f\in \omega(g)$ & $a > b$         & растёт быстрее
     \end{tabular}
   \end{center}
@@ -200,16 +202,17 @@
 \begin{slide}
   Примеры
   \begin{center}
+    \renewcommand{\arraystretch}{2}
     \begin{tabular}{ccc}
       $1 \in o(\log n)$&
       $\log n\in o(\sqrt{n})$&
-      $\sqrt{n}\in o(n)$\\[1ex]
+      $\sqrt{n}\in o(n)$\\
       $n\in o(n\log n)$&
       $n\log n\in o(n^2)$&
-      $n^2\in o(n^3)$\\[1ex]
+      $n^2\in o(n^3)$\\
       $n^k\in o(p^n)$&
       $p^n\in o(n!)$&
-      $n!\in o(n^n)$
+      $n!\in O(n^n)$
     \end{tabular}
   \end{center}
 \end{slide}
@@ -217,14 +220,46 @@
 \begin{slide}
   Типичная временная сложность алгоритмов
   \begin{center}
-    \begin{tabular}{|l|l|l|}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|l|X|}
       \hline
       Обозн.&
-      Название&
       Пример
       \\
       \hline
-    \end{tabular}
+      \hline
+      $O(1)$&
+      Вычисление~$(-1)^n$, обращение к элементу массиву по индексу, обращение к хеш-таблице в лучшем случае
+      \\
+      \hline
+      $O(\log n)$&
+      Поиск по ключу в отсортированном массиве или сбалансированном дереве
+      \\
+      \hline
+      $O(n)$&
+      Поиск по ключу в несортированном массиве, обращение к связному списку по индексу, обращение к
+      хеш-таблице в худшем случае
+      \\
+      \hline
+      $O(n\log n)$&
+      Сортировка массива слиянием, пирамидальная~-- в худшем, quicksort~-- в среднем случае. Теоретический минимум для
+      сортировки сравнением. БПФ
+      \\
+      \hline
+      $O(n^2)$&
+      Сортировка массива вставками, выборками, пузырьковая. Quicksort в худшем случае.
+      \\
+      \hline
+      $O(c^n)$&
+      Распознавание эквивалентности формул логики высказываний полным перебором. Решение задачи коммивояжёра
+      методом динамического программирования.
+      \\
+      \hline
+      $O(n!)$&
+      Решение задачи коммивояжёра полным перебором.
+      \\
+      \hline
+    \end{tabularx}
   \end{center}
 \end{slide}
 \end{document}
