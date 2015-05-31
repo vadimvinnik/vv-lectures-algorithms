@@ -1,0 +1,1 @@
+Lectures on algorithms and data structures, complexity, O(n) notation. Sort: simple insertion, deletion, exchange aka bubble and their advanced counterparts (Shell, heap, quick). Pattern matching (KMP, BM). AVL-trees, RB-trees, B-trees. Hash tables.
